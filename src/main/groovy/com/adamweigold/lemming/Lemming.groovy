@@ -108,7 +108,6 @@ class Lemming<T> {
      *         <li>{@link #setThreadNameFormat}</li>
      *         <li>{@link #setDaemon}</li>
      *         <li>{@link #setPriority}</li>
-     *         <li>{@link #setThreadUncaughtExceptionHandler}</li>
      *         <li>{@link #setThreadFactory}</li>
      *     </ul>
      *

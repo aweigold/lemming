@@ -3,7 +3,11 @@ after_success:
 - "./gradlew jacocoTestReport coveralls"
 - "./gradlew groovydoc buildSite"
 - ".travis/deploy_ghpages.sh"
+- "./gradlew uploadArchives -Pversion=1.0.$TRAVIS_BUILD_NUMBER"
 env:
   global:
   - GH_REF: github.com/aweigold/lemming.git
   - secure: fxyMVivubZL7FcMDWC+4nRYSkWhr13yxarRza7z+jGvkzpoWvgZGUg9m4JoiOwZXE5Yf5rI3xznQuxMWNs8jFqgFWqbYA+3wpsdyAnzlcxTwILhqvaKVch8F5tMx3B9MUj/GMj5uw466yBKqJ3Ulokbutq/dysAheZY34G4xovM=
+  - secure: WHshqBTmx1lJcY+Px2ZnhVvEKIm3TyG2F2Nonredt3oRyXF40d+exxBARTayoPxBcXs6MwNuKbdP95/q3E00Nk63dHCLB6YZoauw0AaxOH0jVpbH78R1ep3BW9IEJ68jEsavln1PnAWzDceKUBMkOCCmPlnnPl9mXt5X/hh+r2U=
+  - secure: I3Remkvzl3hXqiSCUzUOjfVhJTZl6Yd+Dh3ebtSqR3u9onzKK9rH4ja9Ossnqcnemty2zidJtbIYbpOmelyvK74WCz9pn0crDC9gYo8OBi6SRQZHqn8IbaN0EKEpH1JlFjuq/wnJ/NhfdlX6mFkMuSw+q414yFpMmthjBZoB+v0=
+  - secure: d/NeT3JPqWQbiOPiNwALQSQk9dvdOQPA3/FUUFXQwzxrRye0IoAgdg1N1J4izXb7kmxDX/kN95LK0beXhnQFCQ9ijt2F/9dviDViYMB+zR8n26oaYK5CQAkhqui+rCQ2/1FqL3v8T8w834fv8U8vWHKYBUd9GyZ/+s10+yMzyrA=
