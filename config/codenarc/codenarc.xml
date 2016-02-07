@@ -23,8 +23,14 @@
     <ruleset-ref path='rulesets/basic.xml'/>
     <ruleset-ref path='rulesets/braces.xml'/>
     <ruleset-ref path='rulesets/concurrency.xml'/>
-    <ruleset-ref path='rulesets/convention.xml'/>
-    <ruleset-ref path='rulesets/design.xml'/>
+    <ruleset-ref path='rulesets/convention.xml'>
+        <exclude name='NoDef'/>
+    </ruleset-ref>
+    <ruleset-ref path='rulesets/design.xml'>
+        <rule-config name='Instanceof'>
+            <property name='ignoreTypeNames' value='Collection'/>
+        </rule-config>
+    </ruleset-ref>
     <ruleset-ref path='rulesets/dry.xml'/>
     <ruleset-ref path='rulesets/enhanced.xml'/>
     <ruleset-ref path='rulesets/exceptions.xml'>
