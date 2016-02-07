@@ -3,7 +3,7 @@ after_success:
 - "./gradlew jacocoTestReport coveralls"
 - "./gradlew groovydoc buildSite"
 - ".travis/deploy_ghpages.sh"
-- "./gradlew uploadArchives -Pversion=1.0.$TRAVIS_BUILD_NUMBER"
+- ".travis/upload_nexus.sh"
 env:
   global:
   - GH_REF: github.com/aweigold/lemming.git
