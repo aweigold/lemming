@@ -4,8 +4,8 @@ Provides an easy to use builder API for collecting results from multiple threads
 
 [![Build Status](https://travis-ci.org/aweigold/lemming.svg)](https://travis-ci.org/aweigold/lemming)
 [![Coverage Status](https://coveralls.io/repos/aweigold/lemming/badge.svg?branch=master)](https://coveralls.io/r/aweigold/lemming?branch=master)
-
-Note this is still in alpha, the API may change and there may be some errors.
+[![License](https://img.shields.io/badge/License-Apache%202-blue.svg)](LICENSE)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.adamweigold/lemming/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.adamweigold/lemming)
 
 ## Usage
 The Lemming library will collect objects from a list of Callables.  The Callables can return either a single object, or a Collection of them.
