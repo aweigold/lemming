@@ -71,44 +71,46 @@ artifacts {
     archives sourcesJar
 }
 
-signing {
-    sign configurations.archives
-}
+if (System.getenv("PUBLISH") != null){
+    signing {
+        sign configurations.archives
+    }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: sonatypeUsername, password: sonatypePassword)
-            }
-
-            pom.project {
-                name 'lemming'
-                packaging 'jar'
-                description 'A simple to use builder api for asynchronously collecting results in Java or Groovy.'
-                url 'http://http://aweigold.github.io/lemming/'
-
-                scm {
-                    url 'git@github.com:aweigold/lemming.git'
-                    connection 'git@github.com:aweigold/lemming.git'
-                    developerConnection 'git@github.com:aweigold/lemming.git'
+                repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                    authentication(userName: sonatypeUsername, password: sonatypePassword)
                 }
 
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        distribution 'repo'
+                pom.project {
+                    name 'lemming'
+                    packaging 'jar'
+                    description 'A simple to use builder api for asynchronously collecting results in Java or Groovy.'
+                    url 'http://http://aweigold.github.io/lemming/'
+
+                    scm {
+                        url 'git@github.com:aweigold/lemming.git'
+                        connection 'git@github.com:aweigold/lemming.git'
+                        developerConnection 'git@github.com:aweigold/lemming.git'
                     }
-                }
 
-                developers {
-                    developer {
-                        id 'aweigold'
-                        name 'Adam J. Weigold'
-                        email 'adam@adamweigold.com'
+                    licenses {
+                        license {
+                            name 'The Apache Software License, Version 2.0'
+                            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                            distribution 'repo'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id 'aweigold'
+                            name 'Adam J. Weigold'
+                            email 'adam@adamweigold.com'
+                        }
                     }
                 }
             }
