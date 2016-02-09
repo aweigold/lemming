@@ -1,9 +1,4 @@
 language: java
-after_success:
-- "./gradlew jacocoTestReport coveralls"
-- "./gradlew groovydoc buildSite"
-- ".travis/deploy_ghpages.sh"
-- ".travis/upload_nexus.sh"
 env:
   global:
   - GH_REF: github.com/aweigold/lemming.git
@@ -11,3 +6,19 @@ env:
   - secure: I3Remkvzl3hXqiSCUzUOjfVhJTZl6Yd+Dh3ebtSqR3u9onzKK9rH4ja9Ossnqcnemty2zidJtbIYbpOmelyvK74WCz9pn0crDC9gYo8OBi6SRQZHqn8IbaN0EKEpH1JlFjuq/wnJ/NhfdlX6mFkMuSw+q414yFpMmthjBZoB+v0=
   - secure: d/NeT3JPqWQbiOPiNwALQSQk9dvdOQPA3/FUUFXQwzxrRye0IoAgdg1N1J4izXb7kmxDX/kN95LK0beXhnQFCQ9ijt2F/9dviDViYMB+zR8n26oaYK5CQAkhqui+rCQ2/1FqL3v8T8w834fv8U8vWHKYBUd9GyZ/+s10+yMzyrA=
   - secure: OBDA71iFuNsFCvCIz/XfhvgJ5BpRA+jY3TGXxHfMHOgQiZSDQzq4Gk8q9Fgo+Q72V7ukmdcx9a5EZXRcrskUVtg9dT2TXwcFJcWJuuwumsS9Ct9QGmlvTTv4gXiU6sYI6eBAzXZD5jOsiIdiJ1t/ROlaK1VhCdES4vRc55+UpdI=
+before_install:
+- openssl aes-256-cbc -K $encrypted_a66b3d82c9f1_key -iv $encrypted_a66b3d82c9f1_iv
+  -in signing.gpg.enc -out signing.gpg -d
+after_success:
+- "./gradlew jacocoTestReport coveralls"
+- "./gradlew groovydoc buildSite"
+- ".travis/deploy_ghpages.sh"
+- ".travis/upload_nexus.sh"
+deploy:
+  provider: releases
+  api_key:
+    secure: Sqyqn5vnwTGN41kvv1BcFNFzI/qn/nIe0IWk2j5STaL8AXI60SZ1O3tfSGP4GCUA4T9VX3Q6Ps+r+unTQurWStsEYY4u5yQeIZACh988n+GRFqFPma47ZzcTC80PiVM053LIsDWUJZJ9GfFb7JU8Nvf6dWr3g0Hp+QC/p5gIq+k=
+  file: build/libs/lemming-1.0.$TRAVIS_BUILD_NUMBER.jar
+  skip_cleanup: true
+  on:
+    repo: aweigold/lemming
