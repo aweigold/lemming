@@ -74,6 +74,14 @@ artifacts {
 }
 
 if (System.getenv("PUBLISH") != null){
+    buildscript {
+        dependencies {
+            classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.5.3"
+        }
+    }
+
+    apply plugin: 'io.codearte.nexus-staging'
+
     signing {
         sign configurations.archives
     }
