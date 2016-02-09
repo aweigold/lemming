@@ -34,6 +34,8 @@ repositories {
     mavenCentral()
 }
 
+version = System.getenv("TRAVIS_BUILD_NUMBER") != null ? "1.0.${System.getenv("TRAVIS_BUILD_NUMBER")}" : "1.0-SNAPSHOT"
+
 sourceSets {
     readmeSource {
         resources {
@@ -55,9 +57,9 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
+task javadocJar(type: Jar, dependsOn: groovydoc) {
     classifier = 'javadoc'
-    from 'build/docs/javadoc'
+    from 'build/docs/groovydoc'
 }
 
 task sourcesJar(type: Jar) {
