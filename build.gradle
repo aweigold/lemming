@@ -17,6 +17,7 @@ buildscript {
     dependencies {
         classpath 'us.carrclan.david.gradle:gradle-site-plugin:0.2.0'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'
+        classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.5.3"
     }
 }
 
@@ -74,12 +75,6 @@ artifacts {
 }
 
 if (System.getenv("PUBLISH") != null){
-    buildscript {
-        dependencies {
-            classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.5.3"
-        }
-    }
-
     apply plugin: 'io.codearte.nexus-staging'
 
     signing {
