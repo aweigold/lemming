@@ -24,7 +24,10 @@ deploy:
   provider: releases
   api_key:
     secure: Sqyqn5vnwTGN41kvv1BcFNFzI/qn/nIe0IWk2j5STaL8AXI60SZ1O3tfSGP4GCUA4T9VX3Q6Ps+r+unTQurWStsEYY4u5yQeIZACh988n+GRFqFPma47ZzcTC80PiVM053LIsDWUJZJ9GfFb7JU8Nvf6dWr3g0Hp+QC/p5gIq+k=
-  file: build/libs/lemming-1.0.$TRAVIS_BUILD_NUMBER.jar
+  file:
+    - build/libs/lemming-1.0.$TRAVIS_BUILD_NUMBER.jar
+    - build/libs/lemming-1.0.$TRAVIS_BUILD_NUMBER-javadoc.jar
+    - build/libs/lemming-1.0.$TRAVIS_BUILD_NUMBER-sources.jar
   skip_cleanup: true
   on:
     repo: aweigold/lemming
