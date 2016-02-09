@@ -12,14 +12,14 @@ before_install:
 after_success:
 - "./gradlew jacocoTestReport coveralls"
 - "./gradlew groovydoc buildSite"
-- ".travis/deploy_ghpages.sh"
-- ".travis/upload_nexus.sh"
 before_deploy:
   - git config user.name "travis-ci"
   - git config user.email "travis@travis-ci.org"
   - export GIT_TAG=$TRAVIS_BRANCH-1.0.$TRAVIS_BUILD_NUMBER
   - git tag $GIT_TAG -a -m "Generated tag from Travis CI build $TRAVIS_BUILD_NUMBER"
   - git push -q https://${GH_TOKEN}@${GH_REF} --tags > /dev/null 2>&1
+  - ".travis/deploy_ghpages.sh"
+  - ".travis/upload_nexus.sh"
 deploy:
   provider: releases
   api_key:
