@@ -34,7 +34,8 @@ deploy:
   skip_cleanup: true
   on:
     repo: aweigold/lemming
+    branch: master
     tags: false
 branches:
   except:
-    - /^*-v[0-9]/
+    - /v[0-9]+\.[0-9]+\.[0-9]+/
