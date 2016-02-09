@@ -15,7 +15,7 @@ after_success:
 before_deploy:
   - git config user.name "travis-ci"
   - git config user.email "travis@travis-ci.org"
-  - export GIT_TAG=$TRAVIS_BRANCH-1.0.$TRAVIS_BUILD_NUMBER
+  - export GIT_TAG=v1.0.$TRAVIS_BUILD_NUMBER
   - git tag $GIT_TAG -a -m "Generated tag from Travis CI build $TRAVIS_BUILD_NUMBER"
   - git push -q https://${GH_TOKEN}@${GH_REF} --tags > /dev/null 2>&1
   - ".travis/deploy_ghpages.sh"
@@ -28,6 +28,9 @@ deploy:
     - build/libs/lemming-1.0.$TRAVIS_BUILD_NUMBER.jar
     - build/libs/lemming-1.0.$TRAVIS_BUILD_NUMBER-javadoc.jar
     - build/libs/lemming-1.0.$TRAVIS_BUILD_NUMBER-sources.jar
+    - build/libs/lemming-1.0.$TRAVIS_BUILD_NUMBER.jar.asc
+    - build/libs/lemming-1.0.$TRAVIS_BUILD_NUMBER-javadoc.jar.asc
+    - build/libs/lemming-1.0.$TRAVIS_BUILD_NUMBER-sources.jar.asc
   skip_cleanup: true
   on:
     repo: aweigold/lemming
